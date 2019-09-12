@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock paper Scissors</title>
+</head>
+
+
+<body>
+    <h3>Player</h3>
+
+    <div class="choice"> 
+        <button value="rock">Rock</button>
+        <button value="paper">Paper</button>
+        <button value="scissors">Scissors</button>
+    </div>
+    <pre> Player Score <span class="pscore">0</span> </pre>
+    <pre>Computer Score <span class="csore">0</span> </pre>
+
+    <h3>Computer </h3>
+    <h4 class="content"> Who wins?</h4>
+
+    <script>
+        var chc = document.querySelectorAll(".choice button");
+        // var popt = ["rock", "paper", "scissor"];
+        var copt = ["rock", "paper", "scissor"];
+
+        chc.forEach(options =>
+            options.addEventListener("click", function () {
+                const ran = Math.floor(Math.random() * 3);
+                const computerRandom = copt[ran];
+                console.log(computerRandom);
+                compareHands(this.textContent, computerRandom);
+
+            }
+            ));
+
+
+
+            const compareHands = (popt, computerRandom) => {
+            console.log("we are in function");
+            //Update Text
+            const winner = document.querySelector(".content");
+            //Checking for a tie
+            if (popt === computerRandom) {
+                //console.log("Its a tie");
+
+                winner.textContent = "It is a tie";
+                return;    
+            }
+            //Check for Rock 
+            if (popt === "rock") {
+                if (computerRandom === "scissors") {
+                    console.log("Player Wins");
+
+                    winner.textContent = "Player Wins";
+                    // pScore++;
+                    updateScore();
+                    return;
+                } else {
+                    winner.textContent = "Computer Wins";
+                    cScore++;
+                    updateScore();
+                    return;
+                }
+            }
+            //Check for Paper
+            if (popt === "paper") {
+                if (computerRandom === "scissors") {
+                    winner.textContent = "Computer Wins";
+                    cScore++;
+                    updateScore();
+                    return;
+                } else {
+                    winner.textContent = "Player Wins";
+                    pScore++;
+                    updateScore();
+                    return;
+                }
+            }
+            //Check for Scissors
+            if (popt === "scissors") {
+                if (computerRandom === "rock") {
+                    winner.textContent = "Computer Wins";
+                    cScore++;
+                    updateScore();
+                    return;
+                } else {
+                    winner.textContent = "Player Wins";
+                    pScore++;
+                    updateScore();
+                    return;
+                }
+            }
+        }
+
+
+
+function updateScore()
+{
+console.log("here");
+}
+
+
+
+// var a = function random(){
+
+
+//     return computerRandom;
+// }    
+
+    </script>
+
+</body>
+
+
+</html>
